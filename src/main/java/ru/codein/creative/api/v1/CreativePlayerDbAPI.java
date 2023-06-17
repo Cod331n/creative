@@ -1,4 +1,4 @@
-package ru.codein.creative.api;
+package ru.codein.creative.api.v1;
 
 import ru.codein.creative.player.CreativePlayerData;
 

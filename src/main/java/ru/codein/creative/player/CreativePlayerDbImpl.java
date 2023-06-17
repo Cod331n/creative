@@ -3,7 +3,7 @@ package ru.codein.creative.player;
 import lombok.RequiredArgsConstructor;
 import org.bukkit.Bukkit;
 import org.jdbi.v3.core.Jdbi;
-import ru.codein.creative.api.CreativePlayerDbAPI;
+import ru.codein.creative.api.v1.CreativePlayerDbAPI;
 import ru.codein.creative.dao.CreativePlayerDao;
 import ru.codein.creative.rank.Rank;
 

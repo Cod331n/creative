@@ -6,10 +6,10 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import ru.codein.creative.Creative;
-import ru.codein.creative.api.APIService;
+import ru.codein.creative.api.v1.APIService;
 import ru.codein.creative.dao.CreativePlayerDao;
 import ru.codein.creative.player.CreativePlayerData;
-import ru.codein.creative.api.CreativePlayerDbAPI;
+import ru.codein.creative.api.v1.CreativePlayerDbAPI;
 
 public class PlayerConnection implements Listener {
 

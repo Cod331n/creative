@@ -3,10 +3,10 @@ package ru.codein.creative.rank;
 import lombok.SneakyThrows;
 import org.bukkit.entity.Player;
 import org.bukkit.permissions.PermissionAttachment;
-import ru.codein.creative.api.APIService;
-import ru.codein.creative.api.RankAPI;
+import ru.codein.creative.api.v1.APIService;
+import ru.codein.creative.api.v1.RankAPI;
 import ru.codein.creative.player.CreativePlayerData;
-import ru.codein.creative.api.CreativePlayerDbAPI;
+import ru.codein.creative.api.v1.CreativePlayerDbAPI;
 
 public class RankImpl implements RankAPI {
     private final CreativePlayerDbAPI creativePlayerDbAPI = new APIService().getCreativePlayerDbAPI();

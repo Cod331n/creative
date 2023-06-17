@@ -1,4 +1,4 @@
-package ru.codein.creative.api;
+package ru.codein.creative.api.v1;
 
 import lombok.Getter;
 import ru.codein.creative.Creative;
