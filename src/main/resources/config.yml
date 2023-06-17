@@ -1,0 +1,18 @@
+groups:
+  default:
+    permissions:
+      - essentials.spawn
+      - essentials.help
+  moderator:
+    permissions:
+      - essentials.spawn
+      - essentials.help
+      - essentials.kick
+      - essentials.ban
+  admin:
+    permissions:
+      - essentials.spawn
+      - essentials.help
+      - essentials.kick
+      - essentials.ban
+      - essentials.fly

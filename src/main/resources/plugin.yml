@@ -1,0 +1,5 @@
+name: creative
+version: '${project.version}'
+main: ru.codein.creative.Creative
+depend:
+  - PlotSquared
