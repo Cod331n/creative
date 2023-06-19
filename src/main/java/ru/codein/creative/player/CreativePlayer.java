@@ -1,6 +1,7 @@
 package ru.codein.creative.player;
 
 import lombok.Data;
+import org.bukkit.ChatColor;
 import ru.codein.creative.rank.Rank;
 
 /**
@@ -17,10 +18,11 @@ public class CreativePlayer {
      *
      * @param playerData Объект CreativePlayerData, содержащий данные игрока.
      */
-    public void load(CreativePlayerData playerData) {
+    public CreativePlayer load(CreativePlayerData playerData) {
         uuid = playerData.getUuid();
         name = playerData.getName();
         rank = playerData.getRank();
+        return this;
     }
 
     /**
@@ -30,6 +32,16 @@ public class CreativePlayer {
      */
     public CreativePlayerData convertToData() {
         return new CreativePlayerData(uuid, name, rank);
+    }
+
+    @SuppressWarnings("StringBufferReplaceableByString")
+    public String getFormattedName() {
+        String format = new StringBuilder()
+                .append(rank.getPrefixColor())
+                .append(rank.getPrefix())
+                .append(" &f")
+                .append(name).toString();
+        return ChatColor.translateAlternateColorCodes('&', format);
     }
 }
 

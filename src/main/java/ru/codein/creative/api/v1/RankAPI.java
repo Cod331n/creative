@@ -33,6 +33,22 @@ public interface RankAPI {
     Rank getRank(Player player);
 
     /**
+     * Возвращает следующий ранг после текущего ранга.
+     *
+     * @param currentRank текущий ранг
+     * @return следующий ранг после текущего
+     */
+    Rank getNextRank(Rank currentRank);
+
+    /**
+     * Возвращает предыдущий ранг от текущего.
+     *
+     * @param currentRank текущий ранг
+     * @return следующий ранг после текущего
+     */
+    Rank getPreviousRank(Rank currentRank);
+
+    /**
      * Добавляет указанное разрешение (право) к игроку.
      *
      * @param player               игрок, которому будет добавлено разрешение

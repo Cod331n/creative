@@ -4,11 +4,21 @@ import com.intellectualcrafters.plot.PS;
 import com.intellectualcrafters.plot.api.PlotAPI;
 import com.plotsquared.bukkit.BukkitMain;
 import lombok.Getter;
+import lombok.SneakyThrows;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
+import ru.codein.creative.api.v1.APIService;
+import ru.codein.creative.api.v1.CreativePlayerDbAPI;
+import ru.codein.creative.api.v1.RankAPI;
+import ru.codein.creative.api.v1.TabAPI;
+import ru.codein.creative.command.LowerRank;
+import ru.codein.creative.command.UpRank;
 import ru.codein.creative.dao.CreativePlayerDao;
 import ru.codein.creative.db.DatabaseConnector;
 import ru.codein.creative.listener.PlayerConnection;
+import ru.codein.creative.player.CreativePlayerDbImpl;
+import ru.codein.creative.rank.RankImpl;
+import ru.codein.creative.tab.TabImpl;
 
 @SuppressWarnings("deprecation")
 public final class Creative extends JavaPlugin {
@@ -22,7 +32,10 @@ public final class Creative extends JavaPlugin {
     private PlotAPI plotAPI;
     @Getter
     private PS plotSquared;
+    @Getter
+    private APIService apiService;
 
+    @SneakyThrows
     @Override
     public void onEnable() {
         plugin = this;
@@ -37,11 +50,18 @@ public final class Creative extends JavaPlugin {
         plotAPI = new PlotAPI(plugin);
         plotSquared = plotAPI.getPlotSquared();
 
+        // Работа с API используя dependency injection
+        CreativePlayerDbAPI creativePlayerDbAPI = new CreativePlayerDbImpl(databaseConnector.getJdbi(), creativePlayerDao);
+        RankAPI rankAPI = new RankImpl(creativePlayerDbAPI);
+        TabAPI tabAPI = new TabImpl(creativePlayerDbAPI);
+        apiService = new APIService(creativePlayerDbAPI, rankAPI, tabAPI);
+
         // Регистрация слушателей
         Bukkit.getPluginManager().registerEvents(new PlayerConnection(), this);
 
         // Регистрация команд
-        
+        getCommand("uprank").setExecutor(new UpRank());
+        getCommand("lowerrank").setExecutor(new LowerRank());
 
     }
 

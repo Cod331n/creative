@@ -32,7 +32,7 @@ public class CreativePlayerMapper implements RowMapper<CreativePlayerData> {
             String name = rs.getString("NAME");
 
             Clob clob = rs.getClob("RANK");
-            String rankStr = clob.getSubString(1, (int) clob.length());
+            String rankStr = clob.getSubString(0, (int) clob.length());
             Rank rank = Rank.valueOf(rankStr);
 
             return new CreativePlayerData(uuid, name, rank);

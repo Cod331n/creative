@@ -12,7 +12,7 @@ import ru.codein.creative.api.v1.CreativePlayerDbAPI;
 import ru.codein.creative.api.v1.RankAPI;
 import ru.codein.creative.rank.Rank;
 
-public class UpRank implements CommandExecutor {
+public class LowerRank implements CommandExecutor {
     @SneakyThrows
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
@@ -27,7 +27,10 @@ public class UpRank implements CommandExecutor {
             }
 
             Rank currentRank = creativePlayerDbAPI.load(player.getUniqueId().toString()).get().getRank();
-            rankAPI.setRank(player, rankAPI.getNextRank(currentRank));
+            rankAPI.setRank(player, rankAPI.getPreviousRank(currentRank));
+
+            System.out.println(rankAPI.getRank(player));
+
         }
         return false;
     }

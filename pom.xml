@@ -91,20 +91,15 @@
             <artifactId>jdbi3-core</artifactId>
             <version>3.38.2</version>
         </dependency>
-<!--        <dependency>-->
-<!--            <groupId>org.jdbi</groupId>-->
-<!--            <artifactId>jdbi</artifactId>-->
-<!--            <version>2.78</version>-->
-<!--        </dependency>-->
         <dependency>
             <groupId>org.jdbi</groupId>
             <artifactId>jdbi3-sqlobject</artifactId>
             <version>3.38.3</version>
         </dependency>
         <dependency>
-            <groupId>com.h2database</groupId>
-            <artifactId>h2</artifactId>
-            <version>1.4.200</version>
+            <groupId>org.xerial</groupId>
+            <artifactId>sqlite-jdbc</artifactId>
+            <version>3.7.2</version>
         </dependency>
     </dependencies>
 </project>

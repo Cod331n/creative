@@ -3,3 +3,11 @@ version: '${project.version}'
 main: ru.codein.creative.Creative
 depend:
   - PlotSquared
+commands:
+  uprank:
+    description: uprank
+    aliases: [ur, up]
+  lowerrank:
+    description: lowerrank
+    aliases: [lower, down]
+

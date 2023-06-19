@@ -23,5 +23,6 @@ public interface CreativePlayerDbAPI {
      * @param data данные игрока
      * @return CompletableFuture, который завершается значением true, если сохранение прошло успешно, иначе false
      */
+    @SuppressWarnings("UnusedReturnValue")
     CompletableFuture<Boolean> save(CreativePlayerData data);
 }
