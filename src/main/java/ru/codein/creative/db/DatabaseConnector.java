@@ -18,7 +18,7 @@ public class DatabaseConnector {
             String username = getProperty("DB_USERNAME");
             String password = getProperty("DB_PASSWORD");
 
-            File databaseFile = new File("plugins/db/database.db");
+            File databaseFile = new File("plugins/creative/db/database.db");
 
             // Создание директории, если она не существует
             databaseFile.getParentFile().mkdirs();

@@ -22,7 +22,7 @@ public class MessageSender {
     public static void sendMessage(CreativePlayer creativePlayer, String message) {
         String format = new StringBuilder()
                 .append(creativePlayer.getFormattedName())
-                .append(" &4")
+                .append(" &f")
                 .append(message).toString();
 
         Bukkit.broadcastMessage(withColor(format));
@@ -44,7 +44,7 @@ public class MessageSender {
      * @param message сообщение для отправки
      */
     public static void sendFine(Player player, String message) {
-        sendMessage("&2[+]", message, player);
+        sendMessage("&2[+]&f", message, player);
     }
 
     /**
@@ -54,7 +54,7 @@ public class MessageSender {
      * @param message сообщение предупреждения
      */
     public static void sendWarning(Player player, String message) {
-        sendMessage("&e[!]", message, player);
+        sendMessage("&e[!]&f", message, player);
     }
 
     /**
@@ -64,7 +64,7 @@ public class MessageSender {
      * @param message сообщение об ошибке
      */
     public static void sendError(Player player, String message) {
-        sendMessage("&4[-]", message, player);
+        sendMessage("&4[-]&f", message, player);
     }
 
     private static void sendMessage(String prefix, String message, Player player) {

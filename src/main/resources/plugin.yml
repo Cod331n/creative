@@ -5,9 +5,15 @@ depend:
   - PlotSquared
 commands:
   uprank:
+    permission: creative.uprank
     description: uprank
-    aliases: [ur, up]
+    aliases: [up]
   lowerrank:
+    permission: creative.lowerrank
     description: lowerrank
     aliases: [lower, down]
+  pcheck:
+    permission: creative.pcheck
+    description: send plot for review
+
 

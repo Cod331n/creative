@@ -27,7 +27,13 @@ public class UpRank implements CommandExecutor {
             }
 
             Rank currentRank = creativePlayerDbAPI.load(player.getUniqueId().toString()).get().getRank();
-            rankAPI.setRank(player, rankAPI.getNextRank(currentRank));
+            boolean isRankSet = rankAPI.setRank(player, rankAPI.getNextRank(currentRank));
+
+            if (isRankSet) {
+                apiService.getTabAPI().update(player);
+            } else {
+                return false;
+            }
         }
         return false;
     }

@@ -12,6 +12,7 @@ import ru.codein.creative.api.v1.CreativePlayerDbAPI;
 import ru.codein.creative.api.v1.RankAPI;
 import ru.codein.creative.api.v1.TabAPI;
 import ru.codein.creative.command.LowerRank;
+import ru.codein.creative.command.PCheck;
 import ru.codein.creative.command.UpRank;
 import ru.codein.creative.dao.CreativePlayerDao;
 import ru.codein.creative.db.DatabaseConnector;
@@ -62,6 +63,7 @@ public final class Creative extends JavaPlugin {
         // Регистрация команд
         getCommand("uprank").setExecutor(new UpRank());
         getCommand("lowerrank").setExecutor(new LowerRank());
+        getCommand("pcheck").setExecutor(new PCheck());
 
     }
 

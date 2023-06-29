@@ -12,14 +12,16 @@ import ru.codein.creative.api.v1.CreativePlayerDbAPI;
 public class RankImpl implements RankAPI {
     private final CreativePlayerDbAPI creativePlayerDbAPI;
 
+    @SneakyThrows
     @Override
-    public void setRank(Player player, Rank rank) {
-        creativePlayerDbAPI.save(new CreativePlayerData(player.getUniqueId().toString(), player.getName(), rank));
+    public boolean setRank(Player player, Rank rank) {
+        return creativePlayerDbAPI.save(new CreativePlayerData(player.getUniqueId().toString(), player.getName(), rank)).get();
     }
 
+    @SneakyThrows
     @Override
-    public void removeRank(Player player) {
-        creativePlayerDbAPI.save(new CreativePlayerData(player.getUniqueId().toString(), player.getName(), Rank.getDefault()));
+    public boolean removeRank(Player player) {
+        return creativePlayerDbAPI.save(new CreativePlayerData(player.getUniqueId().toString(), player.getName(), Rank.getDefault())).get();
     }
 
     @SneakyThrows

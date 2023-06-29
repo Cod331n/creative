@@ -1,5 +1,6 @@
 package ru.codein.creative.dao.mapper;
 
+import org.bukkit.craftbukkit.v1_12_R1.entity.CraftPlayer;
 import org.jdbi.v3.core.mapper.RowMapper;
 import org.jdbi.v3.core.statement.StatementContext;
 import ru.codein.creative.player.CreativePlayerData;

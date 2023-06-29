@@ -14,15 +14,17 @@ public interface RankAPI {
      *
      * @param player игрок, которому будет установлен ранг
      * @param rank   устанавливаемый ранг
+     * @return
      */
-    void setRank(Player player, Rank rank);
+    boolean setRank(Player player, Rank rank);
 
     /**
      * Устанавливает игроку ранг по умолчанию
      *
      * @param player игрок, у которого будет удален ранг
+     * @return
      */
-    void removeRank(Player player);
+    boolean removeRank(Player player);
 
     /**
      * Получает текущий ранг игрока.

@@ -1,18 +1,27 @@
 groups:
-  default:
+  none:
     permissions:
-      - essentials.spawn
-      - essentials.help
-  moderator:
+
+  member:
     permissions:
-      - essentials.spawn
-      - essentials.help
-      - essentials.kick
-      - essentials.ban
-  admin:
+
+  novice:
     permissions:
-      - essentials.spawn
-      - essentials.help
-      - essentials.kick
-      - essentials.ban
-      - essentials.fly
+
+  master:
+    permissions:
+
+  elite:
+    permissions:
+
+  rt:
+    permissions:
+      - plots.admin.command.kick
+      - creative.uprank
+      - creative.lowerrank
+
+  ls:
+    permissions:
+      - plots.admin.command.kick
+      - creative.uprank
+      - creative.lowerrank

@@ -89,8 +89,9 @@
         <dependency>
             <groupId>org.jdbi</groupId>
             <artifactId>jdbi3-core</artifactId>
-            <version>3.38.2</version>
+            <version>3.39.1</version>
         </dependency>
+
         <dependency>
             <groupId>org.jdbi</groupId>
             <artifactId>jdbi3-sqlobject</artifactId>
@@ -100,6 +101,11 @@
             <groupId>org.xerial</groupId>
             <artifactId>sqlite-jdbc</artifactId>
             <version>3.7.2</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.azbh111</groupId>
+            <artifactId>craftbukkit-1.12.2</artifactId>
+            <version>R</version>
         </dependency>
     </dependencies>
 </project>

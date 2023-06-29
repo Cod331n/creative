@@ -27,10 +27,13 @@ public class LowerRank implements CommandExecutor {
             }
 
             Rank currentRank = creativePlayerDbAPI.load(player.getUniqueId().toString()).get().getRank();
-            rankAPI.setRank(player, rankAPI.getPreviousRank(currentRank));
+            boolean isRankSet = rankAPI.setRank(player, rankAPI.getPreviousRank(currentRank));
 
-            System.out.println(rankAPI.getRank(player));
-
+            if (isRankSet) {
+                apiService.getTabAPI().update(player);
+            } else {
+                return false;
+            }
         }
         return false;
     }

@@ -1,6 +1,8 @@
 package ru.codein.creative.listener;
 
 import lombok.SneakyThrows;
+import net.minecraft.server.v1_12_R1.EntityPlayer;
+import org.bukkit.craftbukkit.v1_12_R1.entity.CraftPlayer;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
@@ -24,6 +26,10 @@ public class PlayerConnection implements Listener {
 
         Creative.getPlugin().getApiService().getTabAPI().update(event.getPlayer());
         MessageSender.sendMessage(creativePlayer, "Привет!");
+
+        CraftPlayer craftPlayer = (CraftPlayer) event.getPlayer();
+        EntityPlayer entityPlayer = craftPlayer.getHandle();
+
     }
 
     @EventHandler

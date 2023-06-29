@@ -1,6 +1,5 @@
 package ru.codein.creative.api.v1;
 
-import javafx.scene.control.Tab;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
