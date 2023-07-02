@@ -5,19 +5,16 @@ import com.intellectualcrafters.plot.api.PlotAPI;
 import com.plotsquared.bukkit.BukkitMain;
 import lombok.Getter;
 import lombok.SneakyThrows;
-import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
-import ru.codein.creative.api.v1.APIService;
-import ru.codein.creative.api.v1.CreativePlayerDbAPI;
-import ru.codein.creative.api.v1.RankAPI;
-import ru.codein.creative.api.v1.TabAPI;
-import ru.codein.creative.command.LowerRank;
+import ru.codein.creative.api.v1.*;
 import ru.codein.creative.command.PCheck;
-import ru.codein.creative.command.UpRank;
+import ru.codein.creative.command.RankDown;
+import ru.codein.creative.command.RankUp;
 import ru.codein.creative.dao.CreativePlayerDao;
 import ru.codein.creative.db.DatabaseConnector;
-import ru.codein.creative.listener.PlayerConnection;
+import ru.codein.creative.permission.PermissionService;
 import ru.codein.creative.player.CreativePlayerDbImpl;
+import ru.codein.creative.player.PlayerConnectionListener;
 import ru.codein.creative.rank.RankImpl;
 import ru.codein.creative.tab.TabImpl;
 
@@ -55,16 +52,17 @@ public final class Creative extends JavaPlugin {
         CreativePlayerDbAPI creativePlayerDbAPI = new CreativePlayerDbImpl(databaseConnector.getJdbi(), creativePlayerDao);
         RankAPI rankAPI = new RankImpl(creativePlayerDbAPI);
         TabAPI tabAPI = new TabImpl(creativePlayerDbAPI);
-        apiService = new APIService(creativePlayerDbAPI, rankAPI, tabAPI);
+        PermissionAPI permissionAPI = new PermissionService();
+        apiService = new APIService(creativePlayerDbAPI, rankAPI, tabAPI, permissionAPI);
 
         // Регистрация слушателей
-        Bukkit.getPluginManager().registerEvents(new PlayerConnection(), this);
+        PlayerConnectionListener playerConnectionListener = new PlayerConnectionListener();
+        playerConnectionListener.register();
 
         // Регистрация команд
-        getCommand("uprank").setExecutor(new UpRank());
-        getCommand("lowerrank").setExecutor(new LowerRank());
+        getCommand("rankup").setExecutor(new RankUp());
+        getCommand("rankdown").setExecutor(new RankDown());
         getCommand("pcheck").setExecutor(new PCheck());
-
     }
 
     @Override

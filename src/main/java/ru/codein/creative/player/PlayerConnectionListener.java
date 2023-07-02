@@ -1,8 +1,7 @@
-package ru.codein.creative.listener;
+package ru.codein.creative.player;
 
 import lombok.SneakyThrows;
-import net.minecraft.server.v1_12_R1.EntityPlayer;
-import org.bukkit.craftbukkit.v1_12_R1.entity.CraftPlayer;
+import org.bukkit.Bukkit;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
@@ -11,13 +10,21 @@ import ru.codein.creative.Creative;
 import ru.codein.creative.api.v1.CreativePlayerDbAPI;
 import ru.codein.creative.chat.MessageSender;
 import ru.codein.creative.dao.CreativePlayerDao;
-import ru.codein.creative.player.CreativePlayer;
-import ru.codein.creative.player.CreativePlayerData;
+import ru.codein.creative.permission.PermissionService;
 
-public class PlayerConnection implements Listener {
+public class PlayerConnectionListener implements Listener {
 
     private final CreativePlayerDao creativePlayerDao = Creative.getPlugin().getCreativePlayerDao();
     private final CreativePlayerDbAPI creativePlayerDbAPI = Creative.getPlugin().getApiService().getCreativePlayerDbAPI();
+
+    public void register() {
+        Bukkit.getPluginManager().registerEvents(this, Creative.getPlugin());
+    }
+
+    public void unregister() {
+        PlayerJoinEvent.getHandlerList().unregister(this);
+        PlayerQuitEvent.getHandlerList().unregister(this);
+    }
     @SneakyThrows
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent event) {
@@ -27,9 +34,8 @@ public class PlayerConnection implements Listener {
         Creative.getPlugin().getApiService().getTabAPI().update(event.getPlayer());
         MessageSender.sendMessage(creativePlayer, "Привет!");
 
-        CraftPlayer craftPlayer = (CraftPlayer) event.getPlayer();
-        EntityPlayer entityPlayer = craftPlayer.getHandle();
-
+        PermissionService permissionAPI = new PermissionService();
+        permissionAPI.reloadPermissions(event.getPlayer());
     }
 
     @EventHandler

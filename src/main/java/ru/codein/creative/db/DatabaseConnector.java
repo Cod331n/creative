@@ -2,6 +2,7 @@ package ru.codein.creative.db;
 
 import org.jdbi.v3.core.Jdbi;
 import org.jdbi.v3.sqlobject.SqlObjectPlugin;
+import ru.codein.creative.util.FileHelper;
 
 import java.io.File;
 import java.io.IOException;
@@ -18,10 +19,10 @@ public class DatabaseConnector {
             String username = getProperty("DB_USERNAME");
             String password = getProperty("DB_PASSWORD");
 
-            File databaseFile = new File("plugins/creative/db/database.db");
-
-            // Создание директории, если она не существует
-            databaseFile.getParentFile().mkdirs();
+            File dir = FileHelper.DATABASE_DIRECTORY;
+            if (!dir.exists()) {
+                dir.mkdirs();
+            }
 
             Jdbi jdbi = Jdbi.create(url, username, password);
             jdbi.installPlugin(new SqlObjectPlugin());

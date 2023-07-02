@@ -10,9 +10,10 @@ import ru.codein.creative.Creative;
 import ru.codein.creative.api.v1.APIService;
 import ru.codein.creative.api.v1.CreativePlayerDbAPI;
 import ru.codein.creative.api.v1.RankAPI;
+import ru.codein.creative.api.v1.PermissionAPI;
 import ru.codein.creative.rank.Rank;
 
-public class UpRank implements CommandExecutor {
+public class RankUp implements CommandExecutor {
     @SneakyThrows
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
@@ -21,6 +22,7 @@ public class UpRank implements CommandExecutor {
             APIService apiService = Creative.getPlugin().getApiService();
             RankAPI rankAPI = apiService.getRankAPI();
             CreativePlayerDbAPI creativePlayerDbAPI = apiService.getCreativePlayerDbAPI();
+            PermissionAPI permissionAPI = apiService.getPermissionAPI();
 
             if (player == null) {
                 return false;
@@ -30,6 +32,7 @@ public class UpRank implements CommandExecutor {
             boolean isRankSet = rankAPI.setRank(player, rankAPI.getNextRank(currentRank));
 
             if (isRankSet) {
+                permissionAPI.reloadPermissions(player);
                 apiService.getTabAPI().update(player);
             } else {
                 return false;

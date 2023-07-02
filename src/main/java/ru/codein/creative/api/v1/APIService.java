@@ -13,4 +13,5 @@ public class APIService {
     private final CreativePlayerDbAPI creativePlayerDbAPI;
     private final RankAPI rankAPI;
     private final TabAPI tabAPI;
+    private final PermissionAPI permissionAPI;
 }

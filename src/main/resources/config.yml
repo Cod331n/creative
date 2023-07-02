@@ -1,27 +1,26 @@
-groups:
-  none:
-    permissions:
+none:
+  permissions:
 
-  member:
-    permissions:
+member:
+  permissions:
 
-  novice:
-    permissions:
+novice:
+  permissions:
 
-  master:
-    permissions:
+master:
+  permissions:
 
-  elite:
-    permissions:
+elite:
+  permissions:
 
-  rt:
-    permissions:
-      - plots.admin.command.kick
-      - creative.uprank
-      - creative.lowerrank
+rt:
+  permissions:
+    - plots.admin.command.kick
+    - creative.rankup
+    - creative.randown
 
-  ls:
-    permissions:
-      - plots.admin.command.kick
-      - creative.uprank
-      - creative.lowerrank
+ls:
+  permissions:
+    - plots.admin.command.kick
+    - creative.rankup
+    - creative.rankdown

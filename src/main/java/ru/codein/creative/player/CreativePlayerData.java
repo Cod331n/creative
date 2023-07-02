@@ -8,7 +8,7 @@ import ru.codein.creative.rank.Rank;
  */
 @Value
 public class CreativePlayerData {
-    public String uuid;
-    public String name;
-    public Rank rank;
+    String uuid;
+    String name;
+    Rank rank;
 }

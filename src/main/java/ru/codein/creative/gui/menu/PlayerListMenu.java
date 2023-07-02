@@ -1,4 +1,4 @@
-package ru.codein.creative.menu;
+package ru.codein.creative.gui.menu;
 
 import lombok.Getter;
 import lombok.SneakyThrows;
@@ -82,11 +82,13 @@ public class PlayerListMenu {
                         List<Double> creativityList = new ArrayList<>();
                         List<Double> compositionList = new ArrayList<>();
                         List<Double> realizationList = new ArrayList<>();
-                        plotCriteriaList.forEach(element -> {
-                            creativityList.add(element.getCreativity());
-                            compositionList.add(element.getComposition());
-                            realizationList.add(element.getRealization());
-                        });
+                        if (plotCriteriaList != null) {
+                            plotCriteriaList.forEach(element -> {
+                                creativityList.add(element.getCreativity());
+                                compositionList.add(element.getComposition());
+                                realizationList.add(element.getRealization());
+                            });
+                        }
 
                         double avgCreativity = MathUtils.getAvgDouble(creativityList);
                         double avgComposition = MathUtils.getAvgDouble(compositionList);
@@ -99,14 +101,17 @@ public class PlayerListMenu {
                         Rank rank = rankAPI.getRank(player);
                         Rank nextRank = rankAPI.getNextRank(rank);
 
+                        // количество оценивших постройку
+                        int estimated = plotCriteriaList != null ? plotCriteriaList.size() : 0;
+
                         lore.add(" ");
-                        lore.add(ChatColor.WHITE + "Плот для повышения ранга до " + ChatColor.translateAlternateColorCodes('&', nextRank.getPrefixColor() + nextRank.getName()));
+                        lore.add(ChatColor.translateAlternateColorCodes('&', "&fПлот &7" + creativePlayerPlotData.getWorldName() + " &fдля повышения ранга до " + nextRank.getPrefixColor() + nextRank.getName()));
                         lore.add(" ");
                         lore.add(ChatColor.GOLD + "Средняя оценка");
                         lore.add(ChatColor.WHITE + "Креативность: " + ChatColor.GRAY + avgCreativity);
                         lore.add(ChatColor.WHITE + "Композиция: " + ChatColor.GRAY + avgComposition);
                         lore.add(ChatColor.WHITE + "Реализация: " + ChatColor.GRAY + avgRealization);
-                        lore.add(ChatColor.WHITE + "Оцененили " + ChatColor.GRAY + plotCriteriaList.size());
+                        lore.add(ChatColor.WHITE + "Оценили: " + ChatColor.GRAY + estimated);
                         lore.add(" ");
                         lore.add(ChatColor.WHITE + "Дата выставления: " + ChatColor.GRAY + creativePlayerPlotData.getFormattedDate());
                         lore.add(" ");

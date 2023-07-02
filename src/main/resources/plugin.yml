@@ -4,14 +4,14 @@ main: ru.codein.creative.Creative
 depend:
   - PlotSquared
 commands:
-  uprank:
+  rankup:
     permission: creative.uprank
-    description: uprank
+    description: up rank
     aliases: [up]
-  lowerrank:
+  rankdown:
     permission: creative.lowerrank
-    description: lowerrank
-    aliases: [lower, down]
+    description: lower rank
+    aliases: [down]
   pcheck:
     permission: creative.pcheck
     description: send plot for review

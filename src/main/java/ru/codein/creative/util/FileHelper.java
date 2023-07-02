@@ -17,6 +17,9 @@ import java.util.stream.Stream;
 
 @SuppressWarnings({"StringBufferReplaceableByString"})
 public class FileHelper {
+
+    public static final File JSON_DIRECTORY = new File("plugins/creative/json/");
+    public static final File DATABASE_DIRECTORY = new File("plugins/creative/db/");
     public static void toJson(String fileName, File dir, CreativePlayerPlotData creativePlayerPlotData) {
         try (FileWriter writer = new FileWriter(new File(dir, new StringBuilder(fileName).append(".json").toString()))) {
             Gson gson = new Gson();

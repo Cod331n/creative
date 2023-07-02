@@ -1,4 +1,4 @@
-package ru.codein.creative.menu;
+package ru.codein.creative.gui.menu;
 
 import lombok.Getter;
 import org.bukkit.Bukkit;
